@@ -31,23 +31,50 @@ function Copyright(props) {
 function Signup() {
     const theme = createTheme();
     const [formData, setFormData] = useState({});
-    axios.defaults.withCredentials = true;
+   // axios.defaults.withCredentials = true;
     const URL = '/user-service/join'
-    const URL2='/content-service/joinContent'
+    const URL2='/content-service/joinContent';
+    const URL3='/user-service/getAllUsers';
 
-    useEffect(() => {
-      const url = "http://localhost:8000/user-service/getAllUsers";
-        axios.get(url,{
-          withCredentials: false
-        })
-        .then(function(response) {
-            console.log(response);
-        })
-        .catch(function(error) {
-            console.log("실패");
-        })
-    }, [])
+  //   useEffect(() => {
+  //        const data={
+  //    loginId: "yksbsfd",
+  //    password: "yksbsfd",
+  //    name: "yksbsfd",
+  //    email: "yksbsfd"
+  // }
+  //     const url = URL;
+  //       axios.post(url,data)
+  //       .then(function(response) {
+  //           console.log(response);
+  //       })
+  //       .catch(function(error) {
+  //           console.log("실패");
+  //       })
+  //   }, [])
     
+//  useEffect(() => {
+
+//   const data={
+//     loginId: "sfd",
+//     password: "sfdfsd",
+//     name: "sfd",
+//     email: "sf"
+//   }
+//   console.log(data);
+//   const instance = axios.create({
+//     baseURL: "http://localhost:8000",
+//   });
+
+//   instance
+//     .post(URL, data)
+//     .then((response) => {
+//       console.log(response);
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     });
+//  }, [])
       
     // useEffect(() => {
     //   const fetchData = async () => {
@@ -60,9 +87,12 @@ function Signup() {
     //   }
     //     try {
     //       const response = await axios.post(URL, dad,{
-    //         withCredentials:false
-    //       })
-            
+    //                headers: {
+    //                  'Content-Type': 'application/json',
+    //                  'Access-Control-Allow-Origin': 'http://localhost:8000',
+  
+    //                }
+    //                })
     //       console.log(response)
     //     }
     //     catch (e) {
@@ -102,38 +132,37 @@ function Signup() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        fetchData(data);
-        // useEffect(()=>{
-        //     fetchData(data);
-        // },[]);
+        const postData=new FormData();
+        
+        postData.append('loginId',data.get('loginId'))
+        postData.append('password',data.get('password'))
+        postData.append('name',data.get('name'))
+        postData.append('email',data.get('email'))
 
-        // console.log({
-        //   loginId: data.get('loginId'),
-        //   password: data.get('password'),
-        //   name: data.get('name'),
-        //   email: data.get('email'),
-        // });
+        fetchData(postData);
       };
 
-    const fetchData= async(data) =>{
+    const fetchData= (postData) =>{
+      console.log(postData);
+      const dad={
+        loginId: "33",
+        name: "33",
+        password: "33",
+        email:"33"
+           }
       const url = "/user-service/join"
-      const header = {'Accept': 'application/json',
-      'Content-Type': 'application/json',}
-      const dad = {
-        "loginId": "33",
-        "name": "33",
-        "password": "33",
-        "email":"33"
-      }
-      axios.post(url, dad, header)
-      .then(response => console.log(response.status))
-      .catch(err => console.log(`Error Occured : ${err}`))
-        // try{
-        // const request=await axios.post("/user-service/join",data);
-        // console.log(request.data);
-        // }catch(error){
-        //     console.error(error);
-        // }
+      
+      axios.post(url,postData,{
+        headers: {
+          "Content-Type": `application/json`,
+        },
+      })
+        .then(function(response) {
+            console.log(response);
+        })
+        .catch(function(error) {
+            console.log("실패");
+        })
     }
     return (     
         <ThemeProvider theme={theme}>
