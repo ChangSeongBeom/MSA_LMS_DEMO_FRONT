@@ -3,7 +3,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-
+import Alert from '@mui/joy/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -29,136 +31,49 @@ function Copyright(props) {
   }
 
 function Signup() {
+
     const theme = createTheme();
-    const [formData, setFormData] = useState({});
-   // axios.defaults.withCredentials = true;
-    const URL = '/user-service/join'
-    const URL2='/content-service/joinContent';
-    const URL3='/user-service/getAllUsers';
+    const navigate = useNavigate();
+ 
 
-  //   useEffect(() => {
-  //        const data={
-  //    loginId: "yksbsfd",
-  //    password: "yksbsfd",
-  //    name: "yksbsfd",
-  //    email: "yksbsfd"
-  // }
-  //     const url = URL;
-  //       axios.post(url,data)
-  //       .then(function(response) {
-  //           console.log(response);
-  //       })
-  //       .catch(function(error) {
-  //           console.log("실패");
-  //       })
-  //   }, [])
-    
-//  useEffect(() => {
-
-//   const data={
-//     loginId: "sfd",
-//     password: "sfdfsd",
-//     name: "sfd",
-//     email: "sf"
-//   }
-//   console.log(data);
-//   const instance = axios.create({
-//     baseURL: "http://localhost:8000",
-//   });
-
-//   instance
-//     .post(URL, data)
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-//  }, [])
-      
-    // useEffect(() => {
-    //   const fetchData = async () => {
-
-    //   const dad={
-    //     loginId: "33",
-    //     name: "33",
-    //     password: "33",
-    //     email:"33"
-    //   }
-    //     try {
-    //       const response = await axios.post(URL, dad,{
-    //                headers: {
-    //                  'Content-Type': 'application/json',
-    //                  'Access-Control-Allow-Origin': 'http://localhost:8000',
-  
-    //                }
-    //                })
-    //       console.log(response)
-    //     }
-    //     catch (e) {
-    //       console.log(e)
-    //     }
-    //   }
-  
-    //   fetchData()
-    // }, [])
-
-    // useEffect(() => {
-    //   const fetchData = async () => {
-
-    //   const dad={
-    //     loginId: "33",
-    //     description: "content3",
-    //     contentLength: 30,
-    //     capaNum:300
-    //   }
-    //     axios.post(URL2,dad,{
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'Access-Control-Allow-Origin': 'http://localhost:3000',
-    //       },
-    //     })
-    //     .then(response=>{
-    //       console.log(response);
-    //     })
-    //     .catch(error=>{
-    //       console.err(error);
-    //     })
-    //   }
-  
-    //   fetchData()
-    // }, [])
     
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        const postData=new FormData();
+        //const postData=new FormData();
         
-        postData.append('loginId',data.get('loginId'))
-        postData.append('password',data.get('password'))
-        postData.append('name',data.get('name'))
-        postData.append('email',data.get('email'))
+        // postData.append('loginId',data.get('loginId'))
+        // postData.append('password',data.get('password'))
+        // postData.append('name',data.get('name'))
+        // postData.append('email',data.get('email'))
 
-        fetchData(postData);
+        fetchData(data);
       };
 
-    const fetchData= (postData) =>{
-      console.log(postData);
-      const dad={
-        loginId: "33",
-        name: "33",
-        password: "33",
-        email:"33"
-           }
-      const url = "/user-service/join"
-      
-      axios.post(url,postData,{
+    const fetchData= (data) =>{
+    
+      const url = requests.join;
+      console.log(url);
+      axios.post(url,data,{
         headers: {
           "Content-Type": `application/json`,
         },
       })
         .then(function(response) {
+          console.log(response);
+          alert("회원가입 완료.");
+          navigate("/main");
+        
+   
+
+          
+//           <Alert severity="success">
+//   <AlertTitle>Success</AlertTitle>
+//   This is a success alert — <strong>check it out!</strong>
+// </Alert>
             console.log(response);
+            
+
         })
         .catch(function(error) {
             console.log("실패");

@@ -5,7 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { Routes, Route } from 'react-router'
+import { Routes, Route } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -14,7 +15,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Signup from './Signup';
-import axios from 'axios';
+import axios from "../api/axios";
+import requests from "../api/requests";
+import Cookies from 'js-cookie'
 
 function Copyright(props) {
   return (
@@ -31,16 +34,36 @@ function Copyright(props) {
 
 function LoginHome() {
     const theme = createTheme();
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-          loginId: data.get('loginId'),
-          password: data.get('password'),
-        });
+      const data = new FormData(event.currentTarget);
+      const url=requests.login;
+      console.log(data);
+        axios.post(url,data,{
+          headers: {
+            "Content-Type": `application/json`,
+    
+          },
+        })
+          .then(function(response) {
+            const cookie = response.headers.get("token");
+            console.log(response.headers);
+            Cookies.set("token",cookie);
+          // console.log("Response headers:", response.body); 
+            console.log(response);         
+            alert("로그인완료");
+            navigate("/main");
+
+          })
+          .catch(function(error) {
+            alert("로그인 불가");
+          })
       };
 
+   
+    
     return (     
         <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs">
