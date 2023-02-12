@@ -1,12 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './App.css';
-import Login from './Login'
-import Main from './Main'
+import Login from './Login';
+import Main from './Main';
+
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <div>
-    <Login/>
-    <Main/>
+      {
+        isAuthenticated===false? <Login/>: <Main/>
+      }
+      
     </div>
   )
 }

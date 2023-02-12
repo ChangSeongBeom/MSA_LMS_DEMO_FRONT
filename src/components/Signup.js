@@ -17,18 +17,6 @@ import axios from "../api/axios";
 import requests from "../api/requests";
 
 
-function Copyright(props) {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
-        {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Your Website
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
 
 function Signup() {
 
@@ -62,7 +50,7 @@ function Signup() {
         .then(function(response) {
           console.log(response);
           alert("회원가입 완료.");
-          navigate("/main");
+          navigate("/");
         
    
 
@@ -158,7 +146,7 @@ function Signup() {
                 </Grid>
               </Box>
             </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
+    
           </Container>
         </ThemeProvider>
       )
