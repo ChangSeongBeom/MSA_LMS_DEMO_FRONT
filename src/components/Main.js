@@ -1,10 +1,15 @@
 import React from 'react'
+import Header from '../common/Header';
+import Footer from '../common/Footer';
 
 function Main({isAuthenticated,setIsAuthenticated}) {
     console.log(isAuthenticated);
     console.log(setIsAuthenticated);
   return (
-    <div>Masdsdsdin</div>
+    <div>
+    <Header></Header>
+    <Footer></Footer>
+    </div>
   )
 }
 
