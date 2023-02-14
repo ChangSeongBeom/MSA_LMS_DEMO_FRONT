@@ -1,10 +1,10 @@
 import React from 'react'
+import { Routes, Route } from 'react-router';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 
-function Main({isAuthenticated,setIsAuthenticated}) {
-    console.log(isAuthenticated);
-    console.log(setIsAuthenticated);
+function Main() {
+
   return (
     <div>
     <Header></Header>

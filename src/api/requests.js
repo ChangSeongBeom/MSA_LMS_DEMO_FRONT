@@ -1,8 +1,9 @@
 const requests = {
     join : "/user-service/join",
     login: "/user-service/login",
-    getAllUsers: "/user-service/getAllUsers"
+    getAllUsers: "/user-service/getAllUsers",
     
+    joinContent: "/content-service/joinContent"
 
 }
 export default requests;

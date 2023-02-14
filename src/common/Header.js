@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,13 +12,19 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import ContentRegistration from '../components/ContentRegistration';
+import { useNavigate } from 'react-router-dom';  
+
 
 const pages = ['콘텐츠 등록', '수강신청', '...'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar() {
+
+function Header() {
+  const [showContentRegistration, setShowContentRegistration] = useState(false);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -27,7 +33,13 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (e,page) => {
+    if(page==='콘텐츠 등록'){
+      navigate("/register");
+    }
+    else if (page == '수강신청'){
+      setShowContentRegistration(false);
+    }
     setAnchorElNav(null);
   };
 
@@ -44,7 +56,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/main"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -83,18 +95,19 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
+         
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page,idx) => {
+                return(
+                 <MenuItem key={idx} onClick={() =>{
+                    this.handleCloseNavMenu();
+                    }}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
-              ))}
+                )
+            })}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -117,12 +130,14 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={(e)=>{
+                  handleCloseNavMenu(e,page)}}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
+            {showContentRegistration && <ContentRegistration />}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -159,4 +174,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Header;
