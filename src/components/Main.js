@@ -1,5 +1,4 @@
 import React from 'react'
-import { Routes, Route } from 'react-router';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 

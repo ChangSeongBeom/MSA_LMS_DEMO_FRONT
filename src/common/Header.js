@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import ContentRegistration from '../components/ContentRegistration';
+import Registration from '../components/Register';
 import { useNavigate } from 'react-router-dom';  
 
 
@@ -35,10 +36,10 @@ function Header() {
 
   const handleCloseNavMenu = (e,page) => {
     if(page==='콘텐츠 등록'){
-      navigate("/register");
+      navigate("/registerContent");
     }
     else if (page == '수강신청'){
-      setShowContentRegistration(false);
+      navigate("/register");
     }
     setAnchorElNav(null);
   };
@@ -137,7 +138,7 @@ function Header() {
                 {page}
               </Button>
             ))}
-            {showContentRegistration && <ContentRegistration />}
+           
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

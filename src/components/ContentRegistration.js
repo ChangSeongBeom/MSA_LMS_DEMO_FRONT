@@ -15,8 +15,11 @@ import {
   import Chip from '@mui/material/Chip';
 
 import '../css/ContentRegistration.css';
+import { useNavigate } from 'react-router-dom';
 
 function ContentRegistration() {
+
+    const navigate = useNavigate();
     const handleSubmit=(e)=>{
         e.preventDefault();
         const form=document.getElementById("content-form");
@@ -41,7 +44,8 @@ function ContentRegistration() {
         })
           .then(function(response) {
             console.log(response);
-            alert("회원등록.");
+            alert("콘텐츠 등록됐어.");
+            navigate("/main");
 
           })
           .catch(function(error) {
