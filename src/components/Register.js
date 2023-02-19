@@ -26,7 +26,7 @@ function Register() {
     
   return (
     <div>
-        <Header></Header>
+      
         {
             contentsList.map((content,idx)=>
                 <Learning contentsList={contentsList} idx={idx}/>

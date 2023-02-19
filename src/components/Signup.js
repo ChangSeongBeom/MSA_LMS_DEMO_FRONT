@@ -51,15 +51,7 @@ function Signup() {
           console.log(response);
           alert("회원가입 완료.");
           navigate("/");
-        
-   
-
-          
-//           <Alert severity="success">
-//   <AlertTitle>Success</AlertTitle>
-//   This is a success alert — <strong>check it out!</strong>
-// </Alert>
-            console.log(response);
+          console.log(response);
             
 
         })

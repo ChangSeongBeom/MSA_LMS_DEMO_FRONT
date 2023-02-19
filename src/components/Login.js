@@ -1,20 +1,27 @@
 import React from 'react';
-import { Routes, Route } from 'react-router';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from './Signup';
 import Main from './Main';
 import LoginHome from './LoginHome';
 import ContentRegistration from './ContentRegistration';
 import Register from './Register';
-
+import Footer from '../common/Footer';
+import Header from '../common/Header';
 function Login() {
     return(
-    <Routes>
-      <Route path="/" element={<LoginHome/>} />
-      <Route path="/signup" element={<Signup/>} />
-      <Route path="/main" element={<Main/>} />
-      <Route path="/registerContent" element={<ContentRegistration/>} />
-      <Route path="/register" element={<Register/>} />
-    </Routes>
+    <div className="App">
+    <Router>
+      <Header/>
+      <Routes>    
+          <Route path="/" element={<LoginHome/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/main" element={<Main/>} />
+          <Route path="/registerContent" element={<ContentRegistration/>} />
+          <Route path="/register" element={<Register/>} />
+      </Routes>
+      <Footer/>
+    </Router>
+    </div>
     )
     
 }

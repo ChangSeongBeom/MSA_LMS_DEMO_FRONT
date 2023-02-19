@@ -55,7 +55,7 @@ function ContentRegistration() {
 
     return(
         <div>
-            <Header></Header>
+     
             <div className='content'>
                 <Chip className="contentRegister" label="콘텐츠 등록" />
                 <form id="content-form">
@@ -103,7 +103,7 @@ function ContentRegistration() {
                     save
                     </Button>
                  </form>
-                <Footer></Footer>
+        
                 </div>
                 </div>
     )

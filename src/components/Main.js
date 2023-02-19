@@ -6,8 +6,7 @@ function Main() {
 
   return (
     <div>
-    <Header></Header>
-    <Footer></Footer>
+
     </div>
   )
 }
