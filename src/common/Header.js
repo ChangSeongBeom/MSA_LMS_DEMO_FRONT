@@ -12,8 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import ContentRegistration from '../components/ContentRegistration';
-import Registration from '../components/Register';
+import ContentRegistration from '../pages/ContentRegistrarion/ContentRegistration';
+import Registration from '../pages/Register/Register';
 import { useNavigate } from 'react-router-dom';  
 
 

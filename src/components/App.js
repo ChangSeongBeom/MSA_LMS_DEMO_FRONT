@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './App.css';
-import Login from './Login';
-import Main from './Main';
+import Login from '../pages/Login/Login';
+import Main from '../pages/Main/Main';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

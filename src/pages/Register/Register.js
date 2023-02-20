@@ -1,13 +1,13 @@
 import React, { useEffect,useState } from 'react'
-import Header from '../../common/Header';
-import Footer from '../../common/Footer';
+
 import axios from "../../api/axios";
 import requests from "../../api/requests";
-import LearningList from './LearningList';
+import RegisterContentList from './RegisterContentList';
+import './Register.css';
 
 function Register() {
     const [contentsList,setContentsList]=useState([]);
-
+    console.log(contentsList);
     useEffect(() => {
       fetchData();
     }, [])
@@ -25,14 +25,15 @@ function Register() {
     }  
     
   return (
-    <div>
+    <div className='learning'>
+      <div className='learningList'>
+          {
+              contentsList.map((content,idx)=>
+                  <RegisterContentList contentsList={contentsList} idx={idx}/>
+              )
+          }
       
-        {
-            contentsList.map((content,idx)=>
-                <LearningList key={idx} contentsList={contentsList} idx={idx}/>
-            )
-        }
-        <Footer></Footer>
+      </div>
     </div>
   )
 }

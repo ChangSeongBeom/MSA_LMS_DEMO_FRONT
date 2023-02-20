@@ -7,6 +7,7 @@ import ContentRegistration from '../ContentRegistrarion/ContentRegistration';
 import Register from '../Register/Register';
 import Footer from '../../common/Footer';
 import Header from '../../common/Header';
+import RegisterContentDetail from '../Register/RegisterContentDetail';
 function Login() {
     return(
     <div className="App">
@@ -18,6 +19,7 @@ function Login() {
           <Route path="/main" element={<Main/>} />
           <Route path="/registerContent" element={<ContentRegistration/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/detail/:id" element={<RegisterContentDetail />}/>
       </Routes>
       <Footer/>
     </Router>

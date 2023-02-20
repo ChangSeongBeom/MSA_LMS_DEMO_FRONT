@@ -32,10 +32,10 @@ function LoginHome() {
         })
           .then(function(response) {
             const cookie = response.headers.get("token");
-            const userId = response.headers.get("userId");
+            const loginId = response.headers.get("loginId");
             console.log(response.headers);
             Cookies.set("token",cookie);
-            Cookies.set("userId",userId);
+            Cookies.set("loginId",loginId);
           // console.log("Response headers:", response.body); 
             console.log(response);         
             alert("로그인완료");

@@ -5,15 +5,18 @@ import './ContentRegistration.css'
 import {Typography,AppBar,Toolbar,TextField,Button,Box} from "@material-ui/core";
 import Chip from '@mui/material/Chip';
 import { useNavigate } from 'react-router-dom';
-
+import { ConstructionOutlined } from '@mui/icons-material';
+import Cookies from 'js-cookie';
 function ContentRegistration() {
 
     const navigate = useNavigate();
+    console.log( Cookies.get('userId'));
     const handleSubmit=(e)=>{
         e.preventDefault();
         const form=document.getElementById("content-form");
      
         const data=new FormData(form);
+        data.set("loginId",Cookies.get('loginId'));
         // console.log(data.get("contentName"));
         // console.log(data.get("description"));
         // console.log(data.get("contentLength"));
@@ -23,7 +26,7 @@ function ContentRegistration() {
 
     
     const fetchData= (data) =>{
-    
+        console.log(data.g);
         const url = requests.joinContent;
         console.log(url);
         axios.post(url,data,{
