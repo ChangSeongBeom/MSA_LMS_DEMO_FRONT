@@ -1,5 +1,4 @@
 import React from 'react'
-import RegisterContentDetail from './RegisterContentDetail';
 import {useNavigate} from 'react-router-dom';
 
 function RegisterContentList({contentsList,idx}) {
@@ -7,10 +6,10 @@ function RegisterContentList({contentsList,idx}) {
   let navigate=useNavigate();
   return (
     <div className='course' onClick={() =>{navigate(`/detail/${contentsList[idx].id}`)}}>
-         <img src='https://source.unsplash.com/random/?programming'/>
-         <div className='courseinfo' >이름   {contentsList[idx].contentName}</div>
-         <div className='courseinfo'>재생시간   {formatDuration(contentsList[idx].contentLength)}</div>
-         <div className='courseinfo'>별점   {contentsList[idx].rating}</div>
+         <img alt="img" src='https://source.unsplash.com/random/?programming'/>
+         <p className='courseinfo' ><b className='coursetitle'>이름</b>   {contentsList[idx].contentName}</p>
+         <p className='courseinfo'><b className='coursetitle'>재생시간</b>   {formatDuration(contentsList[idx].contentLength)}</p>
+         <p className='courseinfo'><b className='coursetitle'>별점</b>   {contentsList[idx].rating}</p>
        
     </div>
   )

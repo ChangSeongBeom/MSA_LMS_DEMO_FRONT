@@ -2,10 +2,9 @@ import React from 'react'
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import './ContentRegistration.css'
-import {Typography,AppBar,Toolbar,TextField,Button,Box} from "@material-ui/core";
+import {TextField,Button} from "@material-ui/core";
 import Chip from '@mui/material/Chip';
 import { useNavigate } from 'react-router-dom';
-import { ConstructionOutlined } from '@mui/icons-material';
 import Cookies from 'js-cookie';
 function ContentRegistration() {
 

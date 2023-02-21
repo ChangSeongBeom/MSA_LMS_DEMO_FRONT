@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,8 +12,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import ContentRegistration from '../pages/ContentRegistrarion/ContentRegistration';
-import Registration from '../pages/Register/Register';
 import { useNavigate } from 'react-router-dom';  
 
 
@@ -22,7 +20,6 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
 function Header() {
-  const [showContentRegistration, setShowContentRegistration] = useState(false);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
@@ -38,7 +35,7 @@ function Header() {
     if(page==='콘텐츠 등록'){
       navigate("/registerContent");
     }
-    else if (page == '수강신청'){
+    else if (page === '수강신청'){
       navigate("/register");
     }
     setAnchorElNav(null);

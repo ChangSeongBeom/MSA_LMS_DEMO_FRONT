@@ -1,29 +1,36 @@
+
 .learningList {
     width: 100%;
     height: auto;
     display: grid;
     /* grid-template-columns: 0.5fr 0.5fr 0.5fr;  */
-    grid-template-columns: 1fr 1fr 1fr ; 
-    
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     place-items: center;
-
-    margin-bottom:50px;
+    margin-bottom:60px;
+    grid-column-gap: 20px;
+    grid-template-columns: repeat(auto-fill, 350px);
+    justify-content: center;
+    
   }
 
   .course{
-    width:500px;
+    width:350px;
     height: 350px;
-    margin:30px;
+    margin-top:50px;
     display: flex;
     flex-direction: column;
-   
+    
     border-style: outset;
     font-size: 17px;
-
     border-radius: 20px;
-    
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    background-color: #FFF2F2;
   }
-
+  
+  /* .course:first-child {
+    background-color: red;
+  } */
   .course img{
     width: 100%;
     height: 70%;
@@ -32,7 +39,96 @@
   }
  
 .courseinfo{
+    height: 10px;
     margin-top:7px;
     font-style: arial;
     font-weight: bold;
+    
+}
+
+.detailContentDiv{
+  height:1300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+.detailContentInfoDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 70%;
+  border: 1px solid black;
+  margin-bottom: 50px;
+}
+.movieAreaDiv{
+  height:40%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.movieAreaDiv video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.footDiv{
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  width: 100%;
+
+}
+.contentInfoDiv{
+  display: flex;
+  flex:1;
+  border: 1px solid black;
+
+}
+.contentDescDiv{
+  height: 100%;
+  width: 100%;
+  flex:3;
+  border: 1px solid blue;
+}
+.scriptBtn{
+  margin-top:20px;
+  margin-left: 30px;
+  background-color: black;
+  color: white;
+  padding:5px 10px 5px 10px;
+  border-radius: 20px;
+}
+
+.contentName{
+  margin-left: 30px;
+  height: 10px;
+}
+.contentinner{
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+}
+.contentinner p{
+  font-size:13px;
+  
+}
+.des{
+  margin-left:0px !important;
+}
+
+.contetRating{
+  height: 100%;
+  width: 100%;
+  flex:2;
+  border: 1px solid orange;
+}
+.reviewDiv{
+  flex:1;
+  border: 1px solid red;
 }

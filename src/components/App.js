@@ -4,7 +4,7 @@ import Login from '../pages/Login/Login';
 import Main from '../pages/Main/Main';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated] = useState(false);
 
   return (
     <div>

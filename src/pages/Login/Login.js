@@ -8,9 +8,11 @@ import Register from '../Register/Register';
 import Footer from '../../common/Footer';
 import Header from '../../common/Header';
 import RegisterContentDetail from '../Register/RegisterContentDetail';
+import './Login.css';
+
 function Login() {
     return(
-    <div className="App">
+    <div className="Login">
     <Router>
       <Header/>
       <Routes>    
