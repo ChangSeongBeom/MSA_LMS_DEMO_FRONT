@@ -23,7 +23,9 @@ function RegisterContentDetail() {
                 console.log(error);
             })
     }
-    console.log(contentInfo);
+   
+   
+ 
   return (
     <div className='detailContentDiv'>
       <div className='detailContentInfoDiv'>
@@ -42,13 +44,71 @@ function RegisterContentDetail() {
                 <p>평점 <strong>{contentInfo.rating}</strong></p>
               </div>
                 
-                <p>{contentInfo.description}</p>
+              <div className='contentinner2'>
+                <p > {contentInfo.description}</p>
+              </div>
             </div>
 
             <div className='contetRating'>
+              <div className='contenticon'>
+              
+              </div>
+              <div className='contentdownload'>
+                <button className='contentdownloadinner'>강의자료</button>
+                
+                <button className='contentdownloadinner'>스크랩</button>
+                <button className='contentdownloadinner'>좋아요</button>
+                <button className='contentdownloadinner'> {contentInfo.likeNum}</button>              
+              </div>
+                
+              <div className='contenttag'>
+                <p><strong>Tag</strong></p>
+                <div className='contenttaginner'>
+                  <div className='contenttaga'>#교육관리</div>
+                  <div className='contenttaga'>#인재성장</div>
+                  <div className='contenttaga'>#경영층</div>
+                  <hr height="100%" width = "100%" color = "grey" size = "3"></hr>
+                </div>
+              </div>
+              <strong>평점</strong>
+              <div className='contentstar'>
+                <label htmlFor="star5">
+                  <input type="radio"id="star5" name="rating"></input>
+                  <img src='https://www.hmgprime.com/img/front/icon/starScore_5.png'alt="Five star rating" width="70" height="15"/>
+
+                </label>
+                <label htmlFor="star4">
+                  <input type="radio" id="star4" name="rating"></input>
+                  <img src='https://www.hmgprime.com/img/front/icon/starScore_4.png' alt="Four star rating" width="70" height="15"/>
+                </label>
+                <label htmlFor="star3">
+                  <input type="radio" id="star3" name="rating"></input>
+                  <img src='https://www.hmgprime.com/img/front/icon/starScore_3.png'alt="Three star rating" width="70" height="15"/>
+                </label>
+                <label htmlFor="star2">
+                  <input type="radio" id="star2" name="rating"></input>
+                  <img src='https://www.hmgprime.com/img/front/icon/starScore_2.png'alt="Two star rating" width="70" height="15"/>
+                </label>
+                <label htmlFor="star1">
+                  <input type="radio" id="star1" name="rating"></input>
+                  <img src='https://www.hmgprime.com/img/front/icon/starScore_1.png'alt="One star rating" width="70" height="15"/>
+                </label>
+                
+              </div>
+              <button className='contentupdateRating'>평점등록</button>
+              
             </div>
           </div>
           <div className='reviewDiv'>
+          <hr height="100%" width = "100%" color = "grey" size = "5"></hr>
+            <p className='reviewcount'>시청소감</p>
+            <div className='myreview'>
+            <textarea className='myreviewpost' placeholder="콘텐츠 시청 소감/의견을 남겨주세요."></textarea>
+            <button className='myreviewpostbtn'>확인</button>
+            </div>
+            <div className='otherreview'>
+              
+            </div>
           </div>
         </div>
       </div>

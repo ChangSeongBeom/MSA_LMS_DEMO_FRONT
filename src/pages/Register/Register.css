@@ -47,7 +47,7 @@
 }
 
 .detailContentDiv{
-  height:1300px;
+  height:1500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,11 +60,11 @@
   align-items: center;
   height: 90%;
   width: 70%;
-  border: 1px solid black;
+  border: 1px solid rgb(194, 191, 191);
   margin-bottom: 50px;
 }
 .movieAreaDiv{
-  height:40%;
+  height:45%;
   width:100%;
   display: flex;
   justify-content: center;
@@ -80,21 +80,21 @@
 .footDiv{
   display: flex;
   flex-direction: column;
-  height: 60%;
+  height: 55%;
   width: 100%;
 
 }
 .contentInfoDiv{
   display: flex;
   flex:1;
-  border: 1px solid black;
+
 
 }
 .contentDescDiv{
   height: 100%;
   width: 100%;
   flex:3;
-  border: 1px solid blue;
+
 }
 .scriptBtn{
   margin-top:20px;
@@ -114,21 +114,127 @@
   flex-direction: row;
   padding-left: 20px;
 }
+.contentinner2{
+  padding-left: 20px;
+}
 .contentinner p{
   font-size:13px;
   
 }
-.des{
-  margin-left:0px !important;
-}
+
 
 .contetRating{
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   flex:2;
-  border: 1px solid orange;
+
+}
+.contentdownload{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+
+  height: 100%;
+  width: 100%;
+ 
+}
+.contentdownload  button{
+  height: 50px;
+  width: 50px;
+  font-size: 5px;
+ 
+
+  font-weight: bold;
+  margin-top: 25px;
+  margin-left: 10px;
+  padding:10px 5px 10px 5px;
+  border-radius: 10px;
+  border:0;
+  line-height: 20px;
+}
+
+.contentdownload  button:nth-child(1){
+  margin-left: 170px;
+}
+
+
+
+.contenttag{
+  margin-top: 30px;
+  height: 100%;
+  width: 100%;
+
+}
+.contenttag p{
+  height: 30px;
+  margin-left: 30px;
+}
+.contenttaginner{
+  height: 70px;
+}
+.contenttaga{
+  border:1px solid grey;
+  border-radius: 20px;
+  text-align: center;
+  margin: 0px 10px 10px 10px;
+  height: 27px; /* change the desired height */
+  width: 90px; /* change the desired width */
+  display: inline-block; /* add this to make the <a> tag respect height and width */
+  box-sizing: border-box; /* add this to include the border in the height and width */
+}
+.contenttaginner a:nth-child(1){
+  margin-left: 35px;
+}
+.contentstar{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+
+}
+.contentstar label {
+  width: 150px;
+  height: 30px;
+}
+.contentupdateRating{
+  margin-right: 10px;
+  border-radius:3px;
+  border-color:rgb(209, 206, 206);
+  
+}
+.reviewcount{
+  margin-left: 20px;
 }
 .reviewDiv{
+  display: flex;
+  flex-direction: column;
   flex:1;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
+.myreview{
+  display: flex;
+  flex:3;
+  height: 100%;
+  width: 100%;
+ 
+}
+.myreviewpost{
+  margin: 0px 0px 0px 20px;
+  border: 1px solid black;
+
+  width: 90%;
+  flex:7;
+}.myreviewpostbtn{
+  flex:1;
+  background-color: #575f72;
+  border: 1px solid #495162;
+  color:white;
+}
+.otherreview{
+  flex:9;
+
 }
