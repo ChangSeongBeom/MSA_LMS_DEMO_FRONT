@@ -5,7 +5,8 @@ const requests = {
     
     joinContent: "/content-service/joinContent",
     getAllContents: "/content-service/getAllContents",
-    getContent: "/content-service/getContent/"
+    getContent: "/content-service/getContent/",
+    updateRating:"content-service/updateRating"
 
 }
 export default requests;

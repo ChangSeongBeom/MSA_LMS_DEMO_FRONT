@@ -1,12 +1,15 @@
+
 import React, { useEffect, useState } from 'react'
-import {useParams} from 'react-router-dom';
+import {useParams,useNavigate} from 'react-router-dom';
 import axios from "../../api/axios";
 import requests from "../../api/requests";
-
+import Cookies from 'js-cookie';
 function RegisterContentDetail() {
+   
     const {id}=useParams(); 
     const [contentInfo,setContentInfo]=useState([]);
-
+    const [selectedRating, setSelectedRating] = useState('');
+   
     useEffect(() => {
    
       fetchData();
@@ -14,14 +17,51 @@ function RegisterContentDetail() {
     
     const fetchData= () =>{
         const url= requests.getContent;
-        axios.get(`${url}${id}`)
-            .then(function(response){
-                console.log(response);
-                setContentInfo(response.data);
-            })
-            .catch(function(error){
-                console.log(error);
-            })
+        axios.get(`${url}${id}`, {
+          headers: {
+            "Authorization": `Bearer ${Cookies.get("token")}`
+          }
+        })
+        .then(function(response) {
+          console.log(response);
+          setContentInfo(response.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    }
+
+    function handleRatingChange(event) {
+      setSelectedRating(event.target.value);
+    }
+  
+    function handleRatingSubmit() {
+      onRatingSubmit(selectedRating);
+    }
+  
+    function onRatingSubmit(rating) {
+      // Do something with the rating value
+      console.log('Selected rating: ', rating);
+
+      const url=requests.updateRating
+      axios.post(url,{
+        id: id,
+        rating: rating
+      },{
+        headers: {
+          "Content-Type": `application/json`,
+          'Authorization': `Bearer ${Cookies.get("token")}`
+        }
+      })
+        .then(function(response) {
+          console.log(response);
+          alert("평가완료.");
+          
+
+        })
+        .catch(function(error) {
+            console.log("실패");
+        })
     }
    
    
@@ -73,29 +113,29 @@ function RegisterContentDetail() {
               <strong>평점</strong>
               <div className='contentstar'>
                 <label htmlFor="star5">
-                  <input type="radio"id="star5" name="rating"></input>
+                  <input type="radio"id="star5" name="rating" value="5" onChange={handleRatingChange}></input>
                   <img src='https://www.hmgprime.com/img/front/icon/starScore_5.png'alt="Five star rating" width="70" height="15"/>
 
                 </label>
                 <label htmlFor="star4">
-                  <input type="radio" id="star4" name="rating"></input>
+                  <input type="radio" id="star4" name="rating" value="4" onChange={handleRatingChange}></input>
                   <img src='https://www.hmgprime.com/img/front/icon/starScore_4.png' alt="Four star rating" width="70" height="15"/>
                 </label>
                 <label htmlFor="star3">
-                  <input type="radio" id="star3" name="rating"></input>
+                  <input type="radio" id="star3" name="rating" value="3" onChange={handleRatingChange}></input>
                   <img src='https://www.hmgprime.com/img/front/icon/starScore_3.png'alt="Three star rating" width="70" height="15"/>
                 </label>
                 <label htmlFor="star2">
-                  <input type="radio" id="star2" name="rating"></input>
+                  <input type="radio" id="star2" name="rating" value="2" onChange={handleRatingChange}></input>
                   <img src='https://www.hmgprime.com/img/front/icon/starScore_2.png'alt="Two star rating" width="70" height="15"/>
                 </label>
                 <label htmlFor="star1">
-                  <input type="radio" id="star1" name="rating"></input>
+                  <input type="radio" id="star1" name="rating" value="1" onChange={handleRatingChange}></input>
                   <img src='https://www.hmgprime.com/img/front/icon/starScore_1.png'alt="One star rating" width="70" height="15"/>
                 </label>
                 
               </div>
-              <button className='contentupdateRating'>평점등록</button>
+              <button className='contentupdateRating' onClick={handleRatingSubmit}>평점등록</button>
               
             </div>
           </div>

@@ -4,7 +4,7 @@ import axios from "../../api/axios";
 import requests from "../../api/requests";
 import RegisterContentList from './RegisterContentList';
 import './Register.css';
-
+import Cookies from 'js-cookie';
 function Register() {
     const [contentsList,setContentsList]=useState([]);
     console.log(contentsList);
@@ -14,7 +14,11 @@ function Register() {
     
     const fetchData= () =>{
         const url = requests.getAllContents;
-        axios.get(url)
+        axios.get(url, {
+          headers: {
+            "Authorization": `Bearer ${Cookies.get("token")}`
+          }
+        })
           .then(function(response) {
             setContentsList(response.data);
 
