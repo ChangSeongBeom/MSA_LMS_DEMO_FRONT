@@ -31,7 +31,9 @@ function ContentRegistration() {
         axios.post(url,data,{
           headers: {
             "Content-Type": `application/json`,
-          },
+            "Authorization": `Bearer ${Cookies.get("token")}`
+          }
+          
         })
           .then(function(response) {
             console.log(response);

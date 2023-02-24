@@ -6,6 +6,9 @@ import RegisterContentList from './RegisterContentList';
 import './Register.css';
 import Cookies from 'js-cookie';
 function Register() {
+
+
+  
     const [contentsList,setContentsList]=useState([]);
     console.log(contentsList);
     useEffect(() => {
@@ -43,3 +46,4 @@ function Register() {
 }
 
 export default Register
+
