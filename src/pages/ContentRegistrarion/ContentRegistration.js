@@ -38,7 +38,7 @@ function ContentRegistration() {
           .then(function(response) {
             console.log(response);
             alert("콘텐츠 등록됐어.");
-            navigate("/main");
+            navigate("/register");
 
           })
           .catch(function(error) {

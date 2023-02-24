@@ -13,8 +13,8 @@ function RegisterContentList({contentsList,idx}) {
         <div className='oneCourseDesc'>
           <div className='oneCourseDetail'>
             <div className='oneCourseDetailinner1'>
-                 수강정원{contentsList[idx].capaNum}
-                 영상시간{contentsList[idx].contentLength}
+               ⏳영상시간{contentsList[idx].contentLength}<br/>
+               🏫 수강정원{contentsList[idx].capaNum}
             </div>
             <div className='oneCourseDetailinener2'>
               <div className='oneCourseDetailinnerinner'>
