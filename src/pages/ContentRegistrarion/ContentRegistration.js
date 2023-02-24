@@ -30,10 +30,10 @@ function ContentRegistration() {
         console.log(url);
         axios.post(url,data,{
           headers: {
+            "Authorization": `Bearer ${Cookies.get("token")}`,
             "Content-Type": `application/json`,
-            "Authorization": `Bearer ${Cookies.get("token")}`
-          }
-          
+            
+          },
         })
           .then(function(response) {
             console.log(response);

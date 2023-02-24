@@ -63,6 +63,13 @@ function Register() {
         <div className='learningSpace'>
           <button>검색</button>
         </div>
+        
+      </div>
+      <div className='learningCondition'>
+        <button>과정명순 </button>
+        <button>추천순</button>
+        <button>별점순</button>
+        <button>공유순</button>
       </div>
       <div className='learningList'>
           {
