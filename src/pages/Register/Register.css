@@ -1,16 +1,107 @@
 
+.learning{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.learningSearch{
+  display: flex;
+  height: 150px;
+  margin-top: 30px;
+  border-radius: 15px;
+  width: 75%;
+
+  background-color: rgb(216, 233, 239);
+  border: none;
+}
+
+.learningwrap select{
+width: 200px; 
+height: 40px;
+padding: .8em .5em; 
+border: 1px solid #999;
+font-family: inherit;  
+background: url('arrow.jpg') no-repeat 95% 50%; 
+border-radius: 0px; 
+-webkit-appearance: none; 
+-moz-appearance: none;
+appearance: none;
+background-color: white;
+border-radius: 15px;
+margin-left: 15px;
+}
+.learningwrap{
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  padding: 10px;
+  
+}
+.learningwrap p{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.learningwrap2{
+  margin-top: 0px;
+  margin-left: 20px;
+  display: flex;
+  padding: 10px;
+}
+.search{
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 28px;
+  border-radius: 15px;
+  width: 545px;
+  height: 30px;
+  line-height: 30px; 
+  font-size: 14px;
+  padding-left: 10px;
+}
+.learningwrap2 p{
+  font-size: 15px;
+  font-weight: bold;
+}
+.pp{
+  margin-left: 80px;
+}
+.learningSelect{
+  flex:9;
+  border : 1px solid white;
+
+}
+
+.learningSpace button{
+  height: 30px;
+  width: 78px;
+  border: none;
+  background-color: rgb(81, 80, 80);
+  color:white;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+.learningSpace{
+  flex:1;
+
+}
 .learningList {
-    width: 100%;
+  
+
+    width: 95%;
     height: auto;
     display: grid;
     /* grid-template-columns: 0.5fr 0.5fr 0.5fr;  */
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     place-items: center;
-    margin-bottom:60px;
+    margin-bottom: 60px;
     grid-column-gap: 20px;
     grid-template-columns: repeat(auto-fill, 350px);
     justify-content: center;
-    
+ 
   }
 
   .course{
