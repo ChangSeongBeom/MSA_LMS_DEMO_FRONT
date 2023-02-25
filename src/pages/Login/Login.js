@@ -23,7 +23,7 @@ function Login() {
           <Route path="/register" element={<Register/>} />
           <Route path="/detail/:id" element={<RegisterContentDetail />}/>
       </Routes>
-      <Footer/>
+     
     </Router>
     </div>
     )

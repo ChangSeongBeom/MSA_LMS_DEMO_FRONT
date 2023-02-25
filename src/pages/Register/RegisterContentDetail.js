@@ -4,32 +4,55 @@ import {useParams,useNavigate} from 'react-router-dom';
 import axios from "../../api/axios";
 import requests from "../../api/requests";
 import Cookies from 'js-cookie';
+import Review from './Review';
+
 function RegisterContentDetail() {
    
     const {id}=useParams(); 
     const [contentInfo,setContentInfo]=useState([]);
     const [selectedRating, setSelectedRating] = useState('');
-   
+    const [reviewContent, setReviewContent] = useState('');
+    const [reviewAllContent, setReviewAllContent] = useState([]);
+
     useEffect(() => {
    
       fetchData();
     }, [])
     
     const fetchData= () =>{
-        const url= requests.getContent;
-        axios.get(`${url}${id}`, {
+      const contenturl= requests.getContent;
+      const reviewurl=requests.getOneContentReview;
+     
+      axios.get(`${contenturl}/${id}`, {
+            headers: {
+              "Authorization": `Bearer ${Cookies.get("token")}`
+            }
+      })
+      .then(function(response){
+        console.log(response.data);
+        setContentInfo(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+      axios.get(`${reviewurl}/${id}`, {
           headers: {
             "Authorization": `Bearer ${Cookies.get("token")}`
           }
-        })
-        .then(function(response) {
-          console.log(response);
-          setContentInfo(response.data);
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
+      }).then(function(response){
+        console.log(response.data);
+        setReviewAllContent(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+     
     }
+  
+
+    const handleTextareaChange = (event) => {
+      setReviewContent(event.target.value);
+    };
 
     function handleRatingChange(event) {
       setSelectedRating(event.target.value);
@@ -38,6 +61,32 @@ function RegisterContentDetail() {
     function handleRatingSubmit() {
       onRatingSubmit(selectedRating);
     }
+
+    const handleReviewSubmit = () => {
+      const url=requests.joinReview;
+      axios.post(url,
+        {
+          loginId:  `${Cookies.get("loginId")}`,
+          contentId: id,
+          review: reviewContent 
+        },{
+          headers: {
+            "Authorization": `Bearer ${Cookies.get("token")}`
+          }
+        })
+        .then(response => {
+          //console.log('Review submitted successfully:', response.data);
+          alert("등록 성공");
+          setReviewContent(''); // clear the textarea
+          setReviewAllContent(prevState => [response.data, ...prevState]);
+        })
+        .catch(error => {
+          // handle error response
+          console.error('Error submitting review:', error);
+        });
+    };
+  
+    
   
     function onRatingSubmit(rating) {
       // Do something with the rating value
@@ -57,7 +106,6 @@ function RegisterContentDetail() {
           console.log(response);
           alert("평가완료.");
           
-
         })
         .catch(function(error) {
             console.log("실패");
@@ -143,10 +191,20 @@ function RegisterContentDetail() {
           <hr height="100%" width = "100%" color = "grey" size = "5"></hr>
             <p className='reviewcount'>시청소감</p>
             <div className='myreview'>
-            <textarea className='myreviewpost' placeholder="콘텐츠 시청 소감/의견을 남겨주세요."></textarea>
-            <button className='myreviewpostbtn'>확인</button>
+            <textarea
+               className='myreviewpost'
+               placeholder='콘텐츠 시청 소감/의견을 남겨주세요.'
+               value={reviewContent}
+               onChange={handleTextareaChange}
+            />
+            <button className='myreviewpostbtn' onClick={handleReviewSubmit}>확인</button>
             </div>
             <div className='otherreview'>
+              {
+                reviewAllContent.map((review,idx)=>
+                <Review key={idx} reviewAllContent={reviewAllContent} idx={idx}/>
+                )
+              }
               
             </div>
           </div>

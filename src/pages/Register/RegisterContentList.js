@@ -13,16 +13,15 @@ function RegisterContentList({contentsList,idx}) {
         <div className='oneCourseDesc'>
           <div className='oneCourseDetail'>
             <div className='oneCourseDetailinner1'>
-               ⏳영상시간{contentsList[idx].contentLength}<br/>
-               🏫 수강정원{contentsList[idx].capaNum}
+               <p className='oneCourseTime'>⏳ {formatDuration(contentsList[idx].contentLength)}</p>
+               <p className='oneCourseMember'>🏫 정원 {contentsList[idx].capaNum}</p>
             </div>
             <div className='oneCourseDetailinener2'>
               <div className='oneCourseDetailinnerinner'>
-                {contentsList[idx].capaNum}
+  
+              <p className='oneCourseName'>{contentsList[idx].contentName}</p>
+              <p className='oneCourseDescDetail'>{contentsList[idx].description.substring(0, 60)}</p>
                
-                콘텐츠이름{contentsList[idx].contentName}<br/>
-                콘텐츠설명{contentsList[idx].description}<br/>
-                카테고리 영역
               </div>
               <div className='oneCourseDetailstart'>
                 <button>수강신청</button>
@@ -32,7 +31,7 @@ function RegisterContentList({contentsList,idx}) {
           </div>
           <hr/>
           <div className='oneCourseTag'>
-            #좋은강의 # 행복강의 # 좋다 좋아
+            <p>#좋은강의 # 행복강의 # 좋다 좋아</p>
           </div>
         </div>
      </div>
@@ -46,11 +45,11 @@ function RegisterContentList({contentsList,idx}) {
    
   )
 }
-// function formatDuration(duration) {
-//   const minutes = Math.floor(duration / 60);
-//   const seconds = duration % 60;
-//   return `${minutes.toString().padStart(2, '0')}분${seconds.toString().padStart(2, '0')}초`;
-// }
+function formatDuration(duration) {
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
+  return `${minutes.toString().padStart(2, '0')}분${seconds.toString().padStart(2, '0')}초`;
+}
 
 
 export default RegisterContentList

@@ -5,37 +5,32 @@ import requests from "../../api/requests";
 import RegisterContentList from './RegisterContentList';
 import './Register.css';
 import Cookies from 'js-cookie';
-import OutlinedInput from '@mui/material/OutlinedInput';
-
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { TextField } from '@mui/material';
 
 function Register() {
-
-
-  
+    const [dataFetched, setDataFetched] = useState(false);
     const [contentsList,setContentsList]=useState([]);
     console.log(contentsList);
     useEffect(() => {
-      fetchData();
-    }, [])
-    
-    const fetchData= () =>{
-        const url = requests.getAllContents;
-        axios.get(url, {
-          headers: {
-            "Authorization": `Bearer ${Cookies.get("token")}`
-          }
-        })
-          .then(function(response) {
-            setContentsList(response.data);
-
-          })
-          .catch(function(error) {
-              console.log(error);
-          })
-    }  
-    
+      const fetchData = async () => {
+        try {
+          const result = await axios.get(requests.getAllContents,{
+            headers: {
+                       "Authorization": `Bearer ${Cookies.get("token")}`
+            }
+          });
+          setContentsList(result.data);
+          setDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      if (!dataFetched) {
+        fetchData();
+      }
+  
+    }, [dataFetched]);
+  
+  if(contentsList){
   return (
     <div className='learning'>
       <div className='learningSearch'>
@@ -81,6 +76,7 @@ function Register() {
       </div>
     </div>
   )
+  }
 }
 
 export default Register

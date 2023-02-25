@@ -5,8 +5,10 @@ const requests = {
     
     joinContent: "/content-service/joinContent",
     getAllContents: "/content-service/getAllContents",
-    getContent: "/content-service/getContent/",
-    updateRating:"content-service/updateRating"
+    getContent: "/content-service/getContent",
+    updateRating:"/content-service/updateRating",
 
+    joinReview: "/review-service/joinReview",
+    getOneContentReview : "/review-service/getOneContentReview"
 }
 export default requests;
